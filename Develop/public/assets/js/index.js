@@ -14,11 +14,13 @@ if (window.location.pathname === '/notes') {
 
 // Show an element
 const show = (elem) => {
+  if(!elem) return 
   elem.style.display = 'inline';
 };
 
 // Hide an element
 const hide = (elem) => {
+  if(!elem) return 
   elem.style.display = 'none';
 };
 
