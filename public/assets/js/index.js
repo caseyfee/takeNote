@@ -47,8 +47,9 @@ const saveNote = (note) =>
     body: JSON.stringify(note),
   });
 
-const deleteNote = (note_id) =>
-  fetch(`/api/notes/${note_id}`, {
+// the deleteNote = (id) could be any varable and is only active between lines 51-58
+const deleteNote = (id) =>
+  fetch(`/api/notes/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -100,7 +101,8 @@ const handleNoteDelete = (e) => {
   }
 
   // re-render notes and active note (which will show the updated list without )
-  deleteNote(note_id).then(() => {
+  // @CASEY come back here and update the noteId with the one it shoudl be
+  deleteNote(noteId).then(() => {
     getAndRenderNotes();
     renderActiveNote();
   });

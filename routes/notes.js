@@ -32,7 +32,8 @@ notes.delete('/:note_id', (req, res) => {
     .then((data) => JSON.parse(data))
     .then((json) => {
       // Make a new array of all notes except the one with the ID provided in the URL
-      const result = json.filter((note) => note.note_id !== noteId);
+      // string in the database comparing to the url 
+      const result = json.filter((note) => note.id != noteId);
 
       // Save that array to the filesystem
       writeToFile('./db/db.json', result);
@@ -52,7 +53,7 @@ notes.post('/', (req, res) => {
     const newNote = {
       title,
       text,
-      note_id: uuidv4(),
+      id: uuidv4(),
     };
 
     readAndAppend(newNote, './db/db.json');
