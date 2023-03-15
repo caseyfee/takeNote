@@ -1,3 +1,4 @@
+// FRONT END JAVASCRIPT
 let noteTitle;
 let noteText;
 let saveNoteBtn;
@@ -24,9 +25,11 @@ const hide = (elem) => {
   elem.style.display = 'none';
 };
 
-// activeNote is used to keep track of the note in the textarea
+// activeNote is used to keep track of the note in the textarea that is selected
 let activeNote = {};
 
+// Get a list of of existing notes from the server 
+// the .then is below - where the other getNotes mention is
 const getNotes = () =>
   fetch('/api/notes', {
     method: 'GET',
@@ -52,12 +55,15 @@ const deleteNote = (id) =>
     },
   });
 
+// 
 const renderActiveNote = () => {
   hide(saveNoteBtn);
 
   if (activeNote.id) {
     noteTitle.setAttribute('readonly', true);
     noteText.setAttribute('readonly', true);
+    // .value is a method on an HTML element
+    // .title and .text is a propery - assigned to active note
     noteTitle.value = activeNote.title;
     noteText.value = activeNote.text;
   } else {
@@ -87,10 +93,12 @@ const handleNoteDelete = (e) => {
   const note = e.target;
   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
 
+  // set the active note to an empty object
   if (activeNote.id === noteId) {
     activeNote = {};
   }
 
+  // re-render notes and active note (which will show the updated list without )
   deleteNote(noteId).then(() => {
     getAndRenderNotes();
     renderActiveNote();
@@ -100,6 +108,7 @@ const handleNoteDelete = (e) => {
 // Sets the activeNote and displays it
 const handleNoteView = (e) => {
   e.preventDefault();
+  // data-note is a stringified version of the active note
   activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
   renderActiveNote();
 };
@@ -110,6 +119,7 @@ const handleNewNoteView = (e) => {
   renderActiveNote();
 };
 
+// This will hide and show the save button when the user is typing
 const handleRenderSaveBtn = () => {
   if (!noteTitle.value.trim() || !noteText.value.trim()) {
     hide(saveNoteBtn);
@@ -135,6 +145,7 @@ const renderNoteList = async (notes) => {
     const spanEl = document.createElement('span');
     spanEl.classList.add('list-item-title');
     spanEl.innerText = text;
+    // this span -whenever it is clicked we will show the active note in the browser 
     spanEl.addEventListener('click', handleNoteView);
 
     liEl.append(spanEl);
