@@ -1,9 +1,7 @@
 const express = require('express');
 
-// Import our modular routers for /tips and /feedback
+// Import the modular routers for /notes
 const notesRouter = require('./notes');
-// const feedbackRouter = require('./feedback');
-// const diagnosticsRouter = require('./diagnostics');
 
 const app = express();
 
