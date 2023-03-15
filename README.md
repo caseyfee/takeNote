@@ -8,7 +8,6 @@ In this project, I modified starter code to create an application called takeNot
 - [Description](#description) 
 - [Credits](#credits) 
 - [Questions](#questions)
-- [Video](#Video-Walkthrough)
 
 ## Credits: 
 Big thanks to the TA's, BCS, my tutor, and the mini-project for this week's success
