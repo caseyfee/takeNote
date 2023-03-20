@@ -24,7 +24,7 @@ app.get('/', (req, res) =>
 );
 
 // GET Route for notes page
-app.get('/', (req, res) =>
+app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/assets/notes.html'))
 );
 
