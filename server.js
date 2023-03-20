@@ -23,8 +23,8 @@ app.get('/', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/assets/index.html'))
 );
 
-// GET Route for feedback page
-app.get('/notes', (req, res) =>
+// GET Route for notes page
+app.get('/', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/assets/notes.html'))
 );
 
