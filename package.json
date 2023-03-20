@@ -1,5 +1,5 @@
 {
-  "name": "takeNote",
+  "name": "note-taker",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
